@@ -1,20 +1,20 @@
+// all imports have to happen here at the top
+import Profpanel from './components/TheProfComponents.js'
+
 (() => {
-    // this imports the Vue library as a variable called Vue
+    // this imports the Vue library as a variable called Vue / instantiate the Vue instance here
   const { createApp } = Vue
 
   createApp({
+    // ALWAYS get your remote date here, in the created lifecycle hook, using fetch or the dataMiner
     created() {
-      console.log('vue instance is created');
-      // fetch the remote data here and pass it to the data object
-
+      // fetch the remote(json) data here and pass it to the data object(Vue instance)
       fetch('./data.json')
         .then(res => res.json())
         .then(data => {
-          console.log(data);
-
-          // push the data into the vue instance
-          // the "this" keyword inside of the Vue instance ALWAYS refers to the instance itself
-          this.remoteData = data;
+          // throw the data into the Vue instance
+          // the "this" keyword ALWAYS refers to the Vue instance itself
+          this.dynamicData = data;
         })
       .catch(error => console.error(error));
     },
@@ -22,23 +22,34 @@
     data() {
       return {
         welcome: 'Hello Vue!',
-        name: 'Your Name Here',
-
-        profs: ['Joe', 'John', 'Justin', 'Jarrod'],
-        remoteData: {},
+        anotherMessage: 'Vue is freaking awesome, yo',
+        profs: ['Joe', 'John', 'Jarrod', 'Justin'],
+        yetAnotherMessage: 'more data to render on the page',
+        dynamicData: {},
+        currentProf: {},
         username: '',
         password: ''
       }
     },
 
     methods: {
-        logClick() {
-            console.log('clicked!');
-        },
+      logClicked() {
+        console.log('clicked on a button');
+      },
 
-        sendFormData() {
-          console.log(this.username, this.password);
-        }
+      showData(item) {
+        // debugger;
+        this.currentProf = item;
+      },
+
+      sendForm() {
+        console.log(this.username, this.password);
+      }
+    },
+
+    components: {
+      profpanel: Profpanel
     }
+
   }).mount('#app');
 })();

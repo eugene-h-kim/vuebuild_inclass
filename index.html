@@ -7,34 +7,45 @@
 
     <link rel="stylesheet" href="css/main.css">
 
-    <title>Learning Vue</title>
+    <title>.: Using Vue :.</title>
 </head>
 <body>
-    <main id="app"> <!-- Vue will attach itself to this container -->
-        <h1>{{ welcome }}</h1>
+    <main id="app"> <!-- Vue will attach itself to this container / this is a hook that tells Vue where to look -->
+        <h1>{{ message }}</h1>
 
-        <h4>{{ name }}</h4>
+        <profpanel v-for="item in dynamicData" :item="item"></profpanel>
 
-        <ul>
+        <!-- <ul>
             <li v-for="prof in profs">{{ prof }}</li>
-        </ul>
+        </ul> -->
 
-        <button @click="logClick">Click Me!</button>
+        <!-- <button @click="logClick">Click Me!</button> -->
 
-        <section v-for="prof in remoteData">
-            <!-- <pre>{{ prof }}</pre> -->
+        <!-- <section v-for="prof in remoteData">
+            <pre>{{ prof }}</pre>
             <h1>{{ prof.name }}</h1>
             <h2>{{ prof.nickname }}</h2>
             <h3>{{ prof.role }}</h3>
 
             <img :src='"images/" + prof.biopic' :alt="'prof.name'">
+        </section> -->
+
+        <section>
+            <pre>{{ currentProf }}</pre>
         </section>
 
-        <section class="form" @keyup.enter="sendFormData">
+        <form @keyup.enter="sendForm" action="">
+            <input v-model="username" type="text" placeholder="username">
+            <input v-model="password" type="password" placeholder="password">
+            <input @click.prevent="sendForm" type="submit" value="Go!">
+        </form>
+
+        <!-- <section class="form" @keyup.enter="sendFormData">
             <input v-model="username" type="text" placeholder="username">
             <input v-model="password" type="password" placeholder="password">
             <input @click="sendFormData" type="submit" value="go!">
-        </section>
+        </section> -->
+
     </main>
     <!-- load third party libraries here - they always go first -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

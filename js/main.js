@@ -1,9 +1,9 @@
 // all imports have to happen here at the top
-import Profpanel from './components/TheProfComponents.js'
+import ProfPanel from './components/TheProfComponents.js'
 
 (() => {
     // this imports the Vue library as a variable called Vue / instantiate the Vue instance here
-  const { createApp } = Vue
+  const { createApp } = Vue;
 
   createApp({
     // ALWAYS get your remote date here, in the created lifecycle hook, using fetch or the dataMiner
@@ -48,7 +48,7 @@ import Profpanel from './components/TheProfComponents.js'
     },
 
     components: {
-      profpanel: Profpanel
+      profpanel: ProfPanel
     }
 
   }).mount('#app');

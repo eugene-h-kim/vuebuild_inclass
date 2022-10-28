@@ -30,6 +30,12 @@
             <img :src='"images/" + prof.biopic' :alt="'prof.name'">
         </section> -->
 
+        <!-- <section class="form" @keyup.enter="sendFormData">
+            <input v-model="username" type="text" placeholder="username">
+            <input v-model="password" type="password" placeholder="password">
+            <input @click="sendFormData" type="submit" value="go!">
+        </section> -->
+
         <section>
             <pre>{{ currentProf }}</pre>
         </section>
@@ -40,15 +46,11 @@
             <input @click.prevent="sendForm" type="submit" value="Go!">
         </form>
 
-        <!-- <section class="form" @keyup.enter="sendFormData">
-            <input v-model="username" type="text" placeholder="username">
-            <input v-model="password" type="password" placeholder="password">
-            <input @click="sendFormData" type="submit" value="go!">
-        </section> -->
-
     </main>
+
     <!-- load third party libraries here - they always go first -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
     <script src="js/main.js" type="module" defer></script>
 </body>
 </html>
